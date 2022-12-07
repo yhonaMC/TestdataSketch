@@ -7,7 +7,8 @@
       "occupation": "Software Developer",
       "nickname": "Johnny",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/1.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/1.jpg",
+      "color": "#845EC2"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "occupation": "Doctor",
       "nickname": "Jane",
       "gender": "Female",
-      "picture": "https://randomuser.me/api/portraits/lego/2.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/2.jpg",
+      "color": "#D65DB1"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "occupation": "Teacher",
       "nickname": "Bobby",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/3.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/3.jpg",
+      "color": "#FF6F91"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "occupation": "Lawyer",
       "nickname": "Ali",
       "gender": "Female",
-      "picture": "https://randomuser.me/api/portraits/lego/4.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/4.jpg",
+      "color": "#FF9671"
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "occupation": "Construction Worker",
       "nickname": "Mike",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/5.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/5.jpg",
+      "color": "#FFC75F"
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "occupation": "Nurse",
       "nickname": "Em",
       "gender": "Female",
-      "picture": "https://randomuser.me/api/portraits/lego/6.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/6.jpg",
+      "color": "#F9F871"
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "occupation": "Police Officer",
       "nickname": "Dave",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/7.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/7.jpg",
+      "color": "#0096D6"
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "occupation": "Graphic Designer",
       "nickname": "Sam",
       "gender": "Female",
-      "picture": "https://randomuser.me/api/portraits/lego/8.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/8.jpg",
+      "color": "#00A5B4"
     },
     {
       "id": 9,
@@ -79,7 +87,8 @@
       "occupation": "Accountant",
       "nickname": "Will",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/9.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/9.jpg",
+      "color": "#00B28D"
     },
     {
       "id": 10,
@@ -88,7 +97,8 @@
       "occupation": "Salespeople",
       "nickname": "Ash",
       "gender": "Female",
-      "picture": "https://randomuser.me/api/portraits/lego/1.jpg"
+      "picture": "https://randomuser.me/api/portraits/lego/1.jpg",
+      "color": "#68BAA6"
     }
   ],
   "tasks": [
@@ -179,7 +189,8 @@
       "description": "This is the tenth task on the list.",
       "completed": true,
       "startDate": "2022-12-04",
-      "endDate": null
+      "endDate": null,
+      "personId": 9
     },
     {
       "id": 11,
