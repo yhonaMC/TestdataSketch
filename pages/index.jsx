@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../Components/Cards/Card";
+import useAppContext from "../Components/Context/Context";
 const HomePage = () => {
-  const [dataCards, setDataCards] = useState([]);
-  // http://localhost:3001/people
-  //http://localhost:3001/tasks
+  const { update, setDataCards, dataCards, flag } = useAppContext();
 
   const apiFetchPeople = async () => {
     const { data } = await axios.get(`http://localhost:3001/people`);
-    setDataCards(data);
+    const order = data.sort((a, b) => {
+      if (a.age < b.age) return -1;
+      if (a.age > b.age) return 1;
+      return 0;
+    });
+    setDataCards(order);
   };
 
   useEffect(() => {
-    apiFetchPeople();
-  }, []);
+    if (flag === null) {
+      apiFetchPeople();
+    }
+  }, [flag]);
 
   return (
     <>
-      <div className="aling-card">
-        <Card dataPeople={dataCards} />
+      <div className="container-cards">
+        <Card dataCards={dataCards} />
       </div>
     </>
   );

@@ -2,6 +2,9 @@ import "./global.css";
 import Head from "next/head";
 import Script from "next/script";
 import Layout from "../Components/Layout";
+import { AppContextProvider } from "../Components/Context/Context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -22,9 +25,22 @@ function MyApp({ Component, pageProps }) {
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"
       />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AppContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </Layout>
+      </AppContextProvider>
     </>
   );
 }

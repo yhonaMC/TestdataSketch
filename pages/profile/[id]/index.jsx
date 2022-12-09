@@ -2,11 +2,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { DivCards } from "../stylepersonalized";
+import { DivCards } from "../../stylepersonalized";
 import Link from "next/link";
+import TaskUser from "../../../Components/Task";
+import useAppContext from "../../../Components/Context/Context";
 
 const CardItem = () => {
+  const { update } = useAppContext();
   const [dataUser, setdataUser] = useState([]);
+  const [taskUser, setTaskUser] = useState([]);
   const {
     query: { id },
   } = useRouter();
@@ -14,41 +18,51 @@ const CardItem = () => {
   const apiFetchPeople = useCallback(async (id) => {
     const { data } = await axios.get(`http://localhost:3001/people/${id}`);
     setdataUser(data);
-    console.log(data);
+  }, []);
+
+  const apiFetchTask = useCallback(async (id) => {
+    const { data } = await axios.get(`http://localhost:3001/tasks`);
+    const dataFilter = data.filter((task) => task.personId === Number(id));
+    setTaskUser(dataFilter);
   }, []);
 
   useEffect(() => {
     if (id) {
       apiFetchPeople(id);
-    } else {
-      return null;
+      apiFetchTask(id);
     }
-  }, [id, apiFetchPeople]);
+  }, [id, apiFetchPeople, apiFetchTask, update]);
+
+  const handleEdit = () => {
+    localStorage.setItem("dataToEdit", JSON.stringify(id));
+  };
 
   return (
     <>
-      <div className="row py-5 px-4">
-        <div className="col-md-5 mx-auto">
+      <div className="py-3 px-2 ">
+        <div className="col-md-8 mx-auto">
           <div className="bg-white shadow rounded overflow-hidden">
             <DivCards bg={dataUser.color} className="px-3 pt-0 pb-4 ">
               <div className="d-flex justify-content-end pt-2">
                 <Link href={`/profile/${id}/edit`} passHref>
-                  <button className="btn btn-outline-dark btn-sm btn-block ">
+                  <span onClick={() => handleEdit()} className="Link">
                     Edit profile
-                  </button>
+                  </span>
                 </Link>
               </div>
 
               <div className="media align-items-end profile-head">
-                <div className="profile mr-3">
-                  <Image
-                    src={dataUser.picture}
-                    alt="user-profile"
-                    width="130"
-                    height="130"
-                    className="rounded mb-2 img-thumbnail"
-                  />
-                </div>
+                {dataUser.picture && (
+                  <div className="profile mr-3">
+                    <Image
+                      src={dataUser.picture}
+                      alt="user-profile"
+                      width="130"
+                      height="130"
+                      className="rounded mb-2 img-thumbnail"
+                    />
+                  </div>
+                )}
 
                 <div className="media-body mb-5 ">
                   <h4 className="mt-0 mb-0">{dataUser.fullName}</h4>
@@ -57,28 +71,6 @@ const CardItem = () => {
               </div>
             </DivCards>
 
-            <div className="bg-light p-4 d-flex justify-content-end text-center">
-              <ul className="list-inline mb-0">
-                <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">215</h5>
-                  <small className="text-muted">
-                    <i className="fas fa-image mr-1"></i>Photos
-                  </small>
-                </li>
-                <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">745</h5>
-                  <small className="text-muted">
-                    <i className="fas fa-user mr-1"></i>Followers
-                  </small>
-                </li>
-                <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">340</h5>
-                  <small className="text-muted">
-                    <i className="fas fa-user mr-1"></i>Following
-                  </small>
-                </li>
-              </ul>
-            </div>
             <div className="px-4 py-3">
               <h5 className="mb-0">About</h5>
               <div className="p-4 rounded shadow-sm bg-light">
@@ -91,6 +83,13 @@ const CardItem = () => {
                   <span className="subtitle-about">Gender:</span>{" "}
                   {dataUser.gender}
                 </p>
+              </div>
+            </div>
+
+            <div className="px-4 py-3">
+              <h5 className="mb-0">Task</h5>
+              <div className="p-4 rounded shadow-sm bg-light">
+                <TaskUser dataTask={taskUser} />
               </div>
             </div>
           </div>
