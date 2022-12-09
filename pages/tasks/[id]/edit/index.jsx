@@ -52,7 +52,6 @@ const EditTask = () => {
 
   const getValueStatusTask = (e) => {
     setvalueStatus(e.target.value);
-    console.log(typeof e.target.value);
   };
 
   const onSubmit = (data) => {

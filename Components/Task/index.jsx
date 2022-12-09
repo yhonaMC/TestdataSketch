@@ -68,14 +68,14 @@ const TaskUser = ({ dataTask }) => {
                         </td>
 
                         <td>
-                          <div class="dropdown">
+                          <div className="dropdown">
                             <button
-                              class="btn  dropdown-toggle"
+                              className="btn  dropdown-toggle"
                               type="button"
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             ></button>
-                            <ul class="dropdown-menu">
+                            <ul className="dropdown-menu">
                               <li className="text-center">
                                 <Link href={`/tasks/${task.id}/edit`}>
                                   <button
