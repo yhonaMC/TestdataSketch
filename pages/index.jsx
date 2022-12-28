@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "../Components/Cards/Card";
 import useAppContext from "../Components/Context/Context";
 const HomePage = () => {
-  const { update, setDataCards, dataCards, flag } = useAppContext();
+  const { setDataCards, dataCards, flag } = useAppContext();
 
   const apiFetchPeople = async () => {
     const { data } = await axios.get(`http://localhost:3001/people`);

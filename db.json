@@ -21,13 +21,13 @@
       "color": "#D65DB1"
     },
     {
-      "id": 3,
       "fullName": "Bob Johnson",
       "age": 45,
       "occupation": "Teacher",
       "nickname": "Bobby",
       "gender": "Male",
-      "picture": "https://randomuser.me/api/portraits/lego/3.jpg",
+      "picture": "https://randomuser.me/api/portraits/lego/5.jpg",
+      "id": 3,
       "color": "#FF6F91"
     },
     {
@@ -130,13 +130,13 @@
       "personId": 3
     },
     {
-      "id": 4,
-      "title": "Task 4",
+      "completed": false,
       "description": "This is the fourth task on the list.",
-      "completed": true,
-      "startDate": "2022-12-04",
       "endDate": "2022-12-06",
-      "personId": 4
+      "id": 4,
+      "personId": 4,
+      "startDate": "2022-12-04",
+      "title": "Task 45"
     },
     {
       "id": 5,
