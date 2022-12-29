@@ -1,13 +1,13 @@
 {
   "people": [
     {
-      "id": 1,
       "fullName": "John Doe",
       "age": 32,
       "occupation": "Software Developer",
       "nickname": "Johnny",
       "gender": "Male",
       "picture": "https://randomuser.me/api/portraits/lego/1.jpg",
+      "id": 1,
       "color": "#845EC2"
     },
     {
@@ -112,7 +112,7 @@
       "title": "Task 1123132"
     },
     {
-      "completed": true,
+      "completed": false,
       "description": "This is the second task on the list.",
       "endDate": "2022-12-05",
       "id": 2,

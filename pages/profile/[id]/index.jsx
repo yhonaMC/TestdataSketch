@@ -6,7 +6,7 @@ import { DivCards } from "../../stylepersonalized";
 import Link from "next/link";
 import TaskUser from "../../../Components/Task";
 import useAppContext from "../../../Components/Context/Context";
-
+import { FiEdit2 } from "react-icons/fi";
 const CardItem = () => {
   const { update } = useAppContext();
   const [dataUser, setdataUser] = useState([]);
@@ -40,15 +40,43 @@ const CardItem = () => {
   return (
     <>
       <div className="py-3 px-2 ">
-        <div className="col-md-8 mx-auto">
+        <div className="col-md-9 mx-auto">
           <div className="bg-white shadow rounded overflow-hidden">
             <DivCards bg={dataUser.color} className="px-3 pt-0 pb-4 ">
               <div className="d-flex justify-content-end pt-2">
-                <Link href={`/profile/${id}/edit`} passHref>
-                  <span onClick={() => handleEdit()} className="Link">
-                    Edit profile
-                  </span>
-                </Link>
+                <div className="dropdown">
+                  <button
+                    class="btn"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-three-dots-vertical"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                    </svg>
+                  </button>
+
+                  <ul className="dropdown-menu">
+                    <Link href={`/profile/${id}/edit`} passHref>
+                      <span
+                        onClick={() => handleEdit()}
+                        className="d-flex justify-content-center aling-item-center"
+                      >
+                        <span className="icon">
+                          <FiEdit2 />
+                        </span>
+                        <h6 className="Link">Edit profile</h6>
+                      </span>
+                    </Link>
+                  </ul>
+                </div>
               </div>
 
               <div className="media align-items-end profile-head">

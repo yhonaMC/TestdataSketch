@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import useAppContext from "../../../../Components/Context/Context";
 import axios from "axios";
+import InputSelect from "../../../../Components/Select/Index";
 
 const EditTask = () => {
   const { update, setUpdate } = useAppContext();
@@ -28,7 +29,24 @@ const EditTask = () => {
     Object.entries(data).map(([key, valor]) => {
       setValue(`${key}`, valor);
     });
+    if (data?.completed) {
+      setvalueStatus({
+        value: 1,
+        label: "complete",
+      });
+    } else {
+      setvalueStatus({
+        value: 2,
+        label: "In progress",
+      });
+    }
+    console.log("here", data);
   }, []);
+
+  const optionsSelectTask = [
+    { value: 1, label: "Complete" },
+    { value: 2, label: "In progress" },
+  ];
 
   const apiUpdateTask = async (id, body) => {
     setUpdate(true);
@@ -49,10 +67,6 @@ const EditTask = () => {
       apiFetchTask(dataToEditTask);
     }
   }, [apiFetchTask, update]);
-
-  const getValueStatusTask = (e) => {
-    setvalueStatus(e.target.value);
-  };
 
   const onSubmit = (data) => {
     const dataToSendTask = {
@@ -128,15 +142,11 @@ const EditTask = () => {
               </div>
 
               <div className="row mt-3">
-                <div className="col-md-12 ">
-                  <select
-                    className="custom-select w-100 select-css"
-                    onChange={getValueStatusTask}
-                  >
-                    <option value={1}>Complete</option>
-                    <option value={2}>In progress</option>
-                  </select>
-                </div>
+                <InputSelect
+                  data={optionsSelectTask}
+                  set={setvalueStatus}
+                  value={valueStatus}
+                />
               </div>
 
               <div className="mt-5 text-center">

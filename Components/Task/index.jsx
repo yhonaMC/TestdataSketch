@@ -34,6 +34,7 @@ const TaskUser = ({ dataTask }) => {
   const handleEditTask = (id) => {
     localStorage.setItem("dataToEditTask", JSON.stringify(id));
   };
+
   return (
     <>
       <section>
@@ -41,7 +42,7 @@ const TaskUser = ({ dataTask }) => {
           <div className="row ">
             <div className="col-lg-12 col-sm-12 col-md-10 col-xs-10">
               <div className="card-body table-responsive">
-                <table className="table mb-4">
+                <table className="table mb-5">
                   <thead>
                     <tr>
                       <th>No.</th>
@@ -70,23 +71,22 @@ const TaskUser = ({ dataTask }) => {
                         <td>
                           <div className="dropdown">
                             <button
-                              className="btn  dropdown-toggle"
+                              class="btn  dropdown-toggle"
                               type="button"
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             ></button>
                             <ul className="dropdown-menu">
-                              <li className="text-center">
-                                <Link href={`/tasks/${task.id}/edit`}>
-                                  <button
-                                    type="submit"
-                                    className="btn btn-edit mb-2 w-100"
-                                    onClick={() => handleEditTask(task.id)}
-                                  >
-                                    Edit
-                                  </button>
-                                </Link>
-                              </li>
+                              <Link href={`/tasks/${task.id}/edit`}>
+                                <button
+                                  type="submit"
+                                  className="btn btn-edit mb-2 w-100"
+                                  onClick={() => handleEditTask(task.id)}
+                                >
+                                  Edit
+                                </button>
+                              </Link>
+
                               <button
                                 onClick={() => handleupdateTask(task)}
                                 type="submit"
@@ -98,8 +98,6 @@ const TaskUser = ({ dataTask }) => {
                               </button>
                             </ul>
                           </div>
-
-                          <button className="btn"></button>
                         </td>
                       </tr>
                     </tbody>

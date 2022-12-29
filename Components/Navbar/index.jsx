@@ -82,6 +82,12 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
+
+              <li className="nav-item pt-2">
+                <Link aria-current="page" href="/">
+                  <span className="text-nav">Add user</span>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
