@@ -116,7 +116,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.dropdown-menu {
+.drop {
   width: 180px !important;
 }
 

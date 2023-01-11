@@ -76,7 +76,7 @@ const TaskUser = ({ dataTask }) => {
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             ></button>
-                            <ul className="dropdown-menu">
+                            <ul className="dropdown-menu drop">
                               <Link href={`/tasks/${task.id}/edit`}>
                                 <button
                                   type="submit"

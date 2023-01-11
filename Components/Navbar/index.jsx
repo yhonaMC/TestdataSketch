@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useAppContext from "../Context/Context";
 
 const Navbar = () => {
-  const { pathname } = useRouter();
+  // const { pathname } = useRouter();
   const { dataCards, setDataCards, setFlag } = useAppContext();
 
   function mayorAMenor() {
