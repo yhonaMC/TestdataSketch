@@ -9,6 +9,26 @@ export const AppContextProvider = ({ children }) => {
   const [flag, setFlag] = useState(null);
   const [dataCards, setDataCards] = useState([]);
 
+  function majorToMinor() {
+    const orderPeople = dataCards.sort((a, b) => {
+      if (a.age > b.age) return -1;
+      if (a.age < b.age) return 1;
+      return 0;
+    });
+    setDataCards(orderPeople);
+    setFlag(true);
+  }
+
+  function minorToMajor() {
+    const orderPeople2 = dataCards.sort((a, b) => {
+      if (a.age < b.age) return -1;
+      if (a.age > b.age) return 1;
+      return 0;
+    });
+    setDataCards(orderPeople2);
+    setFlag(false);
+  }
+
   const values = {
     update,
     setUpdate,
@@ -16,6 +36,8 @@ export const AppContextProvider = ({ children }) => {
     dataCards,
     flag,
     setFlag,
+    majorToMinor,
+    minorToMajor,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

@@ -4,34 +4,14 @@ import { useRouter } from "next/router";
 import useAppContext from "../Context/Context";
 
 const Navbar = () => {
-  // const { pathname } = useRouter();
-  const { dataCards, setDataCards, setFlag } = useAppContext();
-
-  function mayorAMenor() {
-    const orderPeople = dataCards.sort((a, b) => {
-      if (a.age > b.age) return -1;
-      if (a.age < b.age) return 1;
-      return 0;
-    });
-    setDataCards(orderPeople);
-    setFlag(true);
-  }
-
-  function menorAMayor() {
-    const orderPeople2 = dataCards.sort((a, b) => {
-      if (a.age < b.age) return -1;
-      if (a.age > b.age) return 1;
-      return 0;
-    });
-    setDataCards(orderPeople2);
-    setFlag(false);
-  }
+  const { pathname } = useRouter();
+  const { majorToMinor, minorToMajor, setFlag } = useAppContext();
 
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand text-white text-logo">Peoples</a>
+          <a className="navbar-brand text-white text-logo ms-4">Peoples</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -52,40 +32,50 @@ const Navbar = () => {
                   </span>
                 </Link>
               </li>
-
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle text-nav"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Organize
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      onClick={() => mayorAMenor()}
-                    >
-                      From older to younger
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      onClick={() => menorAMayor()}
-                    >
-                      From smallest to largest
-                    </button>
-                  </li>
-                </ul>
-              </li>
+              {pathname !== `/profile/[id]` && pathname !== `/profile/new` && (
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle text-nav"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Organize
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => majorToMinor()}
+                      >
+                        From older to younger
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => minorToMajor()}
+                      >
+                        From smallest to largest
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+              )}
 
               <li className="nav-item pt-2">
-                <Link aria-current="page" href="/">
-                  <span className="text-nav">Add user</span>
+                <Link aria-current="page" href="/profile/new">
+                  <span
+                    className={
+                      pathname !== `/profile/[id]` &&
+                      pathname !== `/profile/new`
+                        ? "text-nav"
+                        : "text-nav ms-2"
+                    }
+                  >
+                    Add user
+                  </span>
                 </Link>
               </li>
             </ul>

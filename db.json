@@ -99,6 +99,16 @@
       "gender": "Female",
       "picture": "https://randomuser.me/api/portraits/lego/1.jpg",
       "color": "#68BAA6"
+    },
+    {
+      "fullName": "Yhonaiker",
+      "age": "25",
+      "occupation": "developer front-end",
+      "nickname": "Yhonamc",
+      "gender": "Male",
+      "picture": "https://randomuser.me/api/portraits/lego/7.jpg",
+      "color": "#455BFA",
+      "id": 11
     }
   ],
   "tasks": [
@@ -202,7 +212,7 @@
       "personId": 1
     },
     {
-      "completed": false,
+      "completed": true,
       "description": "This is the twelfth task on the list.",
       "endDate": "2022-12-05",
       "id": 12,

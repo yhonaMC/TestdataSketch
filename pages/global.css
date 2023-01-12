@@ -2,8 +2,9 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: system-ui;
   font-weight: 500;
+  /* background: #222; */
 }
 
 /* NAV */
@@ -128,4 +129,8 @@ input[type="number"] {
   cursor: pointer;
   margin-left: 6%;
   margin-top: 3px;
+}
+
+.bg-dark {
+  background: #222 !important;
 }
