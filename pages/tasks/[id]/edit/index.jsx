@@ -24,24 +24,33 @@ const EditTask = () => {
     query: { id },
   } = useRouter();
 
-  const apiFetchTask = useCallback(async (id) => {
-    const { data } = await axios.get(`http://localhost:3001/tasks/${id}`);
-    Object.entries(data).map(([key, valor]) => {
-      setValue(`${key}`, valor);
-    });
-    if (data?.completed) {
-      setvalueStatus({
-        value: 1,
-        label: "complete",
-      });
-    } else {
-      setvalueStatus({
-        value: 2,
-        label: "In progress",
-      });
-    }
-    console.log("here", data);
-  }, []);
+  const apiFetchTask = useCallback(
+    async (id, abortePeticion) => {
+      try {
+        const { data } = getDataApi(
+          `http://localhost:3001/tasks/${id}`,
+          abortePeticion
+        );
+        Object.entries(data).map(([key, valor]) => {
+          setValue(`${key}`, valor);
+        });
+        if (data?.completed) {
+          setvalueStatus({
+            value: 1,
+            label: "complete",
+          });
+        } else {
+          setvalueStatus({
+            value: 2,
+            label: "In progress",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [setValue]
+  );
 
   const optionsSelectTask = [
     { value: 1, label: "Complete" },
@@ -63,9 +72,12 @@ const EditTask = () => {
 
   useEffect(() => {
     const dataToEditTask = JSON.parse(localStorage.getItem("dataToEditTask"));
+    const controller = new AbortController();
+    const { signal } = controller;
     if (dataToEditTask) {
-      apiFetchTask(dataToEditTask);
+      apiFetchTask(dataToEditTask, signal);
     }
+    return () => controller.abort();
   }, [apiFetchTask, update]);
 
   const onSubmit = (data) => {
